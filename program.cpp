@@ -1,4 +1,4 @@
-#include <gtkmm.h>
+#include <gtkmm/application.h>
 #include "frame.h"
 
 int main(int argc, char *argv[])
