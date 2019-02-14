@@ -2,6 +2,7 @@
 #define CHIP_PANEL_H
 
 #include <gtkmm/drawingarea.h>
+#include "picture.h"
 
 class Panel : public Gtk::DrawingArea {
  public:
@@ -9,6 +10,8 @@ class Panel : public Gtk::DrawingArea {
   virtual ~Panel() = default;
  protected:
   bool on_draw(const Cairo::RefPtr<Cairo::Context> &cr) override;
+private:
+  Picture picture;
 };
 
 #endif
