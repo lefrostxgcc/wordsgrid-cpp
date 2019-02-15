@@ -3,6 +3,7 @@
 
 #include <cairomm/context.h>
 #include <cairomm/surface.h>
+#include "box.h"
 
 class Picture {
  public:
@@ -16,6 +17,7 @@ class Picture {
  private:
   Cairo::RefPtr<Cairo::ImageSurface> surface;
   Cairo::RefPtr<Cairo::Context> g;
+  Box box;
 };
 
 #endif
