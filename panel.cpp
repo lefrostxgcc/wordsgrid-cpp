@@ -1,6 +1,7 @@
 #include "panel.h"
 
-Panel::Panel()
+Panel::Panel() :
+  picture(12, 40)
 {
   set_size_request(picture.get_width(), picture.get_height());
 }

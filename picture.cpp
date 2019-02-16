@@ -1,11 +1,17 @@
 #include "picture.h"
 
-Picture::Picture() :
-  surface(Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, 600, 400)),
+Glib::Rand Picture::random;
+const Glib::ustring Picture::abc{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+
+Picture::Picture(int N_arg, int D_arg) :
+  surface(Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32,
+                                      N_arg * D_arg + 1, N_arg * D_arg + 1)),
   g(Cairo::Context::create(surface)),
-  box(g)
+  N{N_arg},
+  D{D_arg}
 {
   clear();
+  init();
   draw();
 }
 
@@ -22,10 +28,28 @@ void Picture::clear()
   g->restore();
 }
 
+void Picture::init()
+{
+  box.clear();
+  for (int row = 0; row < N; row++)
+    {
+      box.push_back({});
+      for (int col = 0; col < N; col++)
+        box.back().push_back(Box{g});
+    }
+}
+
 void Picture::draw()
 {
-  box.draw("Q", 50, 80, 40, 40);
-  box.draw("I", 50, 120, 40, 40);
+  for (int row = 0; row < N; row++)
+    for (int col = 0; col < N; col++)
+      box[row][col].draw(get_random_letter(), row * D, col * D, D + 1, D + 1);
+}
+
+Glib::ustring Picture::get_random_letter()
+{
+  auto index = random.get_int_range(0, abc.length());
+  return abc.substr(index, 1);
 }
 
 int Picture::get_width()

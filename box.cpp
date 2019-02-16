@@ -12,6 +12,9 @@ void Box::draw(const Glib::ustring &letter, int x, int y, int sx, int sy)
 {
   g->save();
   g->set_source_rgba(0.0, 0.0, 0.0, 1.0);
+  sx--;
+  sy--;
+  g->set_line_width(0.5);
   g->rectangle(x, y, sx, sy);
   g->stroke();
   g->set_font_face(font);
