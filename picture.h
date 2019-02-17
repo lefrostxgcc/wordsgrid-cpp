@@ -17,9 +17,9 @@ public:
   void clear();
   void init();
   void draw();
+  Cairo::RefPtr<Cairo::ImageSurface> surface;
 private:
   Glib::ustring get_random_letter();
-  Cairo::RefPtr<Cairo::ImageSurface> surface;
   Cairo::RefPtr<Cairo::Context> g;
   std::vector<std::vector<Box>> box;
   static const Glib::ustring abc;

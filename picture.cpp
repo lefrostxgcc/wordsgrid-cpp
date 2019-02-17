@@ -35,7 +35,7 @@ void Picture::init()
     {
       box.push_back({});
       for (int col = 0; col < N; col++)
-        box.back().push_back(Box{g});
+        box.back().push_back(Box{g, D});
     }
 }
 
@@ -43,7 +43,7 @@ void Picture::draw()
 {
   for (int row = 0; row < N; row++)
     for (int col = 0; col < N; col++)
-      box[row][col].draw(get_random_letter(), row * D, col * D, D + 1, D + 1);
+      box[row][col].draw(get_random_letter(), row * D, col * D);
 }
 
 Glib::ustring Picture::get_random_letter()

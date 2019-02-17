@@ -5,13 +5,12 @@
 #include "picture.h"
 
 class Panel : public Gtk::DrawingArea {
- public:
+public:
   Panel();
   virtual ~Panel() = default;
- protected:
-  bool on_draw(const Cairo::RefPtr<Cairo::Context> &cr) override;
-private:
   Picture picture;
+protected:
+  bool on_draw(const Cairo::RefPtr<Cairo::Context> &cr) override;
 };
 
 #endif

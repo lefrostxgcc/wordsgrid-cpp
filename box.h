@@ -7,12 +7,13 @@
 
 class Box {
  public:
-  explicit Box(const Cairo::RefPtr<Cairo::Context> &graphics);
+  explicit Box(const Cairo::RefPtr<Cairo::Context> &graphics, int D);
   ~Box() = default;
-  void draw(const Glib::ustring &letter, int x, int y, int sx, int sy);
+  void draw(const Glib::ustring &letter, int x, int y);
  private:
   Cairo::RefPtr<Cairo::Context> g;
   Cairo::RefPtr<Cairo::ToyFontFace> font;
+  int D;
 };
 
 #endif

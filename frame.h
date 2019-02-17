@@ -8,7 +8,6 @@ class Frame : public Gtk::Window
 {
  public:
   explicit Frame(const Glib::ustring &caption);
-private:
   Panel panel;
 };
 
