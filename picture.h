@@ -23,6 +23,7 @@ private:
   Cairo::RefPtr<Cairo::Context> g;
   std::vector<std::vector<Box>> box;
   static const Glib::ustring abc;
+  Glib::ustring word{"IMPLEMENTATION"};
   static Glib::Rand random;
   int N;
   int D;

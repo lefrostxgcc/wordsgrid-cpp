@@ -9,7 +9,7 @@ Box::Box(const Cairo::RefPtr<Cairo::Context> &graphics, int D_arg) :
 {
 }
 
-void Box::draw(const Glib::ustring &letter, int x, int y)
+void Box::draw(const Glib::ustring &letter, bool hint, int x, int y)
 {
   g->save();
   g->set_source_rgba(0.0, 0.0, 0.0, 1.0);
@@ -22,7 +22,10 @@ void Box::draw(const Glib::ustring &letter, int x, int y)
   g->get_text_extents(letter, ex);
   double letter_x = x + 1 + (D - 2 - ex.width) / 2 - ex.x_bearing;
   double letter_y = y + 1 + (D - 2 - ex.height) / 2 - ex.y_bearing;
-  g->set_source_rgba(1.0, 0.0, 0.0, 1.0);
+  if (hint)
+    g->set_source_rgba(1.0, 165.0 / 255.0, 0.0, 1.0);
+  else
+    g->set_source_rgba(1.0, 0.0, 0.0, 1.0);
   g->move_to(letter_x, letter_y);
   g->show_text(letter);
   g->stroke();
